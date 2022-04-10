@@ -17,7 +17,7 @@ describe('Search product with special symbols', () => {
     beforeEach(() => {
         cy.openShop()
     })
-    it(`Search product with special symbols`, () => {
+    it(`Check the app doesn't fail with special symbols`, () => {
         var specialSymbols = `~!@#$%^&*()-_=+[]\{}|;':",./<>?`
         cy.get('.search-form-field').type(`${specialSymbols}`, {
             parseSpecialCharSequences: false,
@@ -31,7 +31,7 @@ describe('Search product with special symbols', () => {
     });
 
     searchCases.forEach((searchCase) => {
-        it(`Search product by product name with special symbol`, () => {
+        it(`Search product by product name with special symbol: ${searchCase.searchString}`, () => {
             cy.get('.search-form-field').type(`${searchCase.searchString}{enter}`)
     
             cy.get('.search-filter-tags')

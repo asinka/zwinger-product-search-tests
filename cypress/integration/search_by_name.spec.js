@@ -89,7 +89,8 @@ describe('Search product by name', () => {
         cy.get('.navigation-desktop').within(() => {
             cy.contains('Category with less than 12 products').click()
           });
-        cy.get('.search-form-field').type('Framed Butterfly Painting 2{enter}') //here I search from category where the item is not presented
+        cy.get('.category-headline').contains('Category with less than 12 products').should('be.visible')
+        cy.get('.search-form-field').type('Framed Butterfly Painting 2{enter}') // search from category where the item is not presented
         cy.get('.search-filter-tags')
             .should('be.visible')
             .contains('Framed Butterfly Painting 2')
